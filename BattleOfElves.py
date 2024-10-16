@@ -1,5 +1,7 @@
 import random
 import math
+import time
+import sys
 
 # Elf Class
 class Elf:
@@ -32,6 +34,14 @@ class Elf:
               f"Air velocity: {self.air_velocity}, Special Attack Power: {self.special_attack_power}, "
               f"Power Level: {self.power_level}")
 
+# Function to print text letter by letter
+def print_with_delay(text, delay=0.035):
+    for char in text:
+        sys.stdout.write(char)
+        sys.stdout.flush()
+        time.sleep(delay)
+    print()  # Print a new line at the end
+
 # Create multiple elves
 def create_elves(num_elves):
     elves = []
@@ -47,7 +57,7 @@ def create_elves(num_elves):
     return elves
 
 # Main program
-print("\033[1mBattle of Elves\033[0m\n")  # Print title in bold
+print_with_delay("\033[1mBattle of Elves\033[0m\n")  # Print title in bold
 
 num_elves = int(input("Enter the number of elves to create: "))
 elf_list = create_elves(num_elves)
@@ -61,4 +71,4 @@ for elf in elf_list:
         strongest_elf = elf
 
 # Winner Elf
-print(f"\n\033[1m{strongest_elf.name} won the battle with a power level of {strongest_elf.power_level}.\033[0m")
+print_with_delay(f"\n\033[1m{strongest_elf.name} won the battle with a power level of {strongest_elf.power_level}.\033[0m")
